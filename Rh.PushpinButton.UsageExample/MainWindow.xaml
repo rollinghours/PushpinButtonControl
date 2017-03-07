@@ -1,0 +1,81 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rh.PushpinButton.UsageExample"
+        xmlns:rh="http://schemas.rollinghours.com/wpf" 
+        x:Class="Rh.PushpinButton.UsageExample.MainWindow"
+        mc:Ignorable="d" 
+        Title="MainWindow" Height="150" Width="400">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="rh:PushpinButton">
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Width" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+
+            <!--Default-->
+            <rh:PushpinButton />
+
+            <!--Default, disabled-->
+            <rh:PushpinButton IsEnabled="False" />
+
+            <!--No border, custom colors-->
+            <rh:PushpinButton MouseOverBackground="LightGoldenrodYellow"
+                              BorderThickness="0" 
+                              PressedBackground="PaleGoldenrod"
+                              CheckedBackground="{Binding Background, RelativeSource={RelativeSource Self}}"/>
+
+            <!--Custom glyph pics-->
+            <rh:PushpinButton EnabledPinnedImageSource="pack://application:,,,/Rh.PushpinButton.UsageExample;component/Pushpin_cyan_pinned_16x.png"
+                              EnabledUnpinnedImageSource="pack://application:,,,/Rh.PushpinButton.UsageExample;component/Pushpin_cyan_unpinned_16x.png" />
+
+
+            <!--Unpinned glyph is hidden until mouse hover-->
+            <rh:PushpinButton Width="Auto" 
+                              IsHiddenUnpinnedGlyph="True"
+                              CheckedBackground="{Binding Background, RelativeSource={RelativeSource Self}}">
+                <TextBlock Text="Hover over" Margin="4 0"/>
+            </rh:PushpinButton>
+
+            <!--Transparent-->
+            <rh:PushpinButton Cursor="Hand" 
+                              Background="Transparent" BorderBrush="Transparent"
+                              MouseOverBackground="Transparent" MouseOverBorder="Transparent"
+                              PressedBackground="Transparent" PressedBorder="Transparent"
+                              CheckedBackground="Transparent" CheckedBorder="Transparent" />
+
+            <!--A custom styled glyph pic-->
+            <rh:PushpinButton EnabledPinnedImageSource="{Binding EnabledUnpinnedImageSource, RelativeSource={RelativeSource Self}}"
+                              DisabledPinnedImageSource="{Binding DisabledUnpinnedImageSource, RelativeSource={RelativeSource Self}}"
+                              DisabledUnpinnedImageSource="{Binding DisabledUnpinnedImageSource, RelativeSource={RelativeSource Self}}">
+                <rh:PushpinButton.ImageStyle>
+                    <Style TargetType="Image">
+                        <Setter Property="RenderTransformOrigin" Value=".5,.5" />
+                        <Setter Property="RenderTransform" >
+                            <Setter.Value>
+                                <RotateTransform Angle="-45" />
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </rh:PushpinButton.ImageStyle>
+            </rh:PushpinButton>
+
+        </StackPanel>
+    </Grid>
+</Window>
