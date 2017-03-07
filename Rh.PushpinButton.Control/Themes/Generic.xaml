@@ -1,0 +1,177 @@
+﻿    <ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Rh.PushpinButton.Control">
+
+    <SolidColorBrush x:Key="PushpinButton.Pressed.Background" Color="#FFC4E5F6" />
+    <SolidColorBrush x:Key="PushpinButton.Pressed.Border" Color="#FF2C628B" />
+    <SolidColorBrush x:Key="PushpinButton.MouseOver.Background" Color="#FFBEE6FD" />
+    <SolidColorBrush x:Key="PushpinButton.MouseOver.Border" Color="#FF3C7FB1" />
+    <SolidColorBrush x:Key="PushpinButton.Checked.Background" Color="#FFBCDDEE" />
+    <SolidColorBrush x:Key="PushpinButton.Checked.Border" Color="#FF245A83" />
+    <SolidColorBrush x:Key="PushpinButton.Disabled.Background" Color="#FFF4F4F4" />
+    <SolidColorBrush x:Key="PushpinButton.Disabled.Border" Color="#FFADB2B5" />
+    <SolidColorBrush x:Key="PushpinButton.Disabled.Foreground" Color="#FF838383" />
+    <BitmapImage x:Key="PushpinButton.Enabled.Checked.Image" UriSource="pack://application:,,,/Rh.PushpinButton.Control;component/Themes/Pushpin_16x.png"/>
+    <BitmapImage x:Key="PushpinButton.Disabled.Checked.Image" UriSource="pack://application:,,,/Rh.PushpinButton.Control;component/Themes/Pushpin_disabled_16x.png"/>
+    <BitmapImage x:Key="PushpinButton.Enabled.Unchecked.Image" UriSource="pack://application:,,,/Rh.PushpinButton.Control;component/Themes/PushpinUnpin_16x.png"/>
+    <BitmapImage x:Key="PushpinButton.Disabled.Unchecked.Image" UriSource="pack://application:,,,/Rh.PushpinButton.Control;component/Themes/PushpinUnpin_disabled_16x.png"/>
+    <Duration x:Key="TransitionDuration">0:0:.1</Duration>
+
+    <Style TargetType="{x:Type local:PushpinButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
+        <Setter Property="EnabledPinnedImageSource" Value="{StaticResource PushpinButton.Enabled.Checked.Image}" />
+        <Setter Property="DisabledPinnedImageSource" Value="{x:Null}" />
+        <Setter Property="EnabledUnpinnedImageSource" Value="{StaticResource PushpinButton.Enabled.Unchecked.Image}" />
+        <Setter Property="DisabledUnpinnedImageSource" Value="{x:Null}" />
+        <Setter Property="MouseOverBackground" Value="{StaticResource PushpinButton.MouseOver.Background}" />
+        <Setter Property="MouseOverBorder" Value="{StaticResource PushpinButton.MouseOver.Border}" />
+        <Setter Property="CheckedBackground" Value="{StaticResource PushpinButton.Checked.Background}" />
+        <Setter Property="CheckedBorder" Value="{StaticResource PushpinButton.Checked.Border}" />
+        <Setter Property="PressedBackground" Value="{StaticResource PushpinButton.Pressed.Background}" />
+        <Setter Property="PressedBorder" Value="{StaticResource PushpinButton.Pressed.Border}" />
+        <Setter Property="DisabledBackground" Value="{StaticResource PushpinButton.Disabled.Background}" />
+        <Setter Property="DisabledBorder" Value="{StaticResource PushpinButton.Disabled.Border}" />
+        <Setter Property="DisabledForeground" Value="{StaticResource PushpinButton.Disabled.Foreground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:PushpinButton}">
+                    <Border x:Name="border" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            Background="{TemplateBinding Background}" 
+                            SnapsToDevicePixels="True">
+                        <StackPanel Orientation="Horizontal" Margin="{TemplateBinding Padding}">
+                            <Image x:Name="picture" 
+                                   Source="{TemplateBinding EnabledUnpinnedImageSource}" 
+                                   Style="{TemplateBinding ImageStyle}"
+                                   Height="16" 
+                                   Width="16"/>
+                            <ContentPresenter x:Name="contentPresenter" 
+                                              Focusable="False" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{Binding CheckedBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{Binding CheckedBorder, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{Binding MouseOverBorder, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{Binding PressedBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{Binding PressedBorder, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="{Binding DisabledBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{Binding DisabledBorder, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{Binding DisabledForeground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False" />
+                                <Condition Property="IsChecked" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Source" TargetName="picture" Value="{Binding DisabledUnpinnedImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False" />
+                                <Condition Property="IsChecked" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Source" TargetName="picture" Value="{Binding DisabledPinnedImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="True" />
+                                <Condition Property="IsChecked" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Source" TargetName="picture" Value="{Binding EnabledPinnedImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="True" />
+                                <Condition Property="IsChecked" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Source" TargetName="picture" Value="{Binding EnabledUnpinnedImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>                        
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False" />
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="DisabledPinnedImageSource" Value="{x:Null}" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Source" TargetName="picture" Value="{Binding EnabledPinnedImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <Setter Property="Opacity" TargetName="picture" Value="0.5" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False" />
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="DisabledUnpinnedImageSource" Value="{x:Null}" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Source" TargetName="picture" Value="{Binding EnabledUnpinnedImageSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <Setter Property="Opacity" TargetName="picture" Value="0.5" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="IsHiddenUnpinnedGlyph" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Visibility" TargetName="picture" Value="Hidden" />
+                            </MultiTrigger.Setters>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                                         Storyboard.TargetName="picture"
+                                                         From="1" To="0" 
+                                                         Duration="{StaticResource TransitionDuration}" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False" />
+                                <Condition Property="IsHiddenUnpinnedGlyph" Value="True" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Visibility" TargetName="picture" Value="Visible" />
+                            </MultiTrigger.Setters>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                                         Storyboard.TargetName="picture"
+                                                         From="0" To="1" 
+                                                         Duration="{StaticResource TransitionDuration}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
