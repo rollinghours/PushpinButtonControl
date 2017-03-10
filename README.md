@@ -1,6 +1,6 @@
 # PushpinButtonControl
 A pushpin button control for WPF. Has built-in overridable "pinned vs. unpinned" images.  
-Background and border for each state can be controlled via properties for easier styling. 
+Background and border properties can be set separately for each button state.
 Based on ToggleButton.
 
 ## How To Install
@@ -9,23 +9,23 @@ from your application project. Add the namespace mapping ```xmlns:rh="http://sch
 to the Window element of your XAML file, then use the button like in an example below.
 
 ## Sample Use
-* Default:
+Default:
 ```xml
           <rh:PushpinButton />
 ```
-* No border, custom colors:
+No border, custom colors:
 ```xml
           <rh:PushpinButton MouseOverBackground="LightGoldenrodYellow"
                             BorderThickness="0" 
                             PressedBackground="PaleGoldenrod"
                             CheckedBackground="{Binding Background, RelativeSource={RelativeSource Self}}"/>
 ```
-* Custom glyph pics:
+Custom glyph pics:
 ```xml
           <rh:PushpinButton EnabledPinnedImageSource="pack://application:,,,/MyApp;component/customPinned.png"
                             EnabledUnpinnedImageSource="pack://application:,,,/MyApp;component/customUnpinned.png" />
 ```
-* Unpinned glyph is hidden until mouse hover:
+Unpinned glyph is hidden until mouse hover:
 ```xml
           <rh:PushpinButton Width="Auto" 
                             IsHiddenUnpinnedGlyph="True"
@@ -33,7 +33,7 @@ to the Window element of your XAML file, then use the button like in an example 
               <TextBlock Text="Hover over"/>
           </rh:PushpinButton>
 ```
-* Transparent:
+Transparent:
 ```xml
           <rh:PushpinButton Cursor="Hand" 
                             Background="Transparent" BorderBrush="Transparent"
@@ -44,7 +44,7 @@ to the Window element of your XAML file, then use the button like in an example 
                             CheckedBackground="Transparent" 
                             CheckedBorder="Transparent" />
 ```
-* A custom styled glyph pic:
+A custom styled glyph pic:
 ```xml
           <rh:PushpinButton EnabledPinnedImageSource="{Binding EnabledUnpinnedImageSource, RelativeSource={RelativeSource Self}}"
                             DisabledPinnedImageSource="{Binding DisabledUnpinnedImageSource, RelativeSource={RelativeSource Self}}"
