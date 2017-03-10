@@ -6,7 +6,7 @@ Based on ToggleButton.
 ## How To Install
 Install the nuget package or build ```Rh.PushpinButton.Control``` and add reference to it
 from your application project. Add the namespace mapping ```xmlns:rh="http://schemas.rollinghours.com/wpf"```
-to the Window element of your XAML file, then use the button like in an example below.
+to the Window element in your XAML file, then use the button like in an example below.
 
 ## Sample Use
 Default:
