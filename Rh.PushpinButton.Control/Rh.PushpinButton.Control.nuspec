@@ -6,8 +6,9 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/rollinghours/PushpinButtonControl/blob/master/License.txt</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/rollinghours/PushpinButtonControl</projectUrl>
+    <repository type="git" url="https://github.com/rollinghours/PushpinButtonControl.git"/>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Updated copyright notice</releaseNotes>
