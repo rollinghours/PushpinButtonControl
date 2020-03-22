@@ -9,9 +9,9 @@ using System.Windows.Markup;
 [assembly: AssemblyTitle("Rh.PushpinButton.Control")]
 [assembly: AssemblyDescription("Pushpin button control for WPF")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Rollinghours.com")]
+[assembly: AssemblyCompany("Alexander Zhmerik")]
 [assembly: AssemblyProduct("Rh.PushpinButton.Control")]
-[assembly: AssemblyCopyright("Copyright © 2015 Rollingours.com owners")]
+[assembly: AssemblyCopyright("Copyright © 2015-2020 Alexander Zhmerik")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -50,9 +50,9 @@ using System.Windows.Markup;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: AssemblyInformationalVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyInformationalVersion("1.0.1.0")]
 
 [assembly: XmlnsPrefix("http://schemas.rollinghours.com/wpf", "rh")]
 [assembly: XmlnsDefinition("http://schemas.rollinghours.com/wpf", "Rh.PushpinButton.Control")]

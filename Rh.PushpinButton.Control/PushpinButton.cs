@@ -1,6 +1,6 @@
-﻿#region Copyright (c) 2015 Rollinghours.com owners (rhours@outlook.com)
+﻿#region Copyright (c) Alexander Zhmerik (rhours@outlook.com)
 /* The MIT License (MIT) for Rh.PushpinButton.Control
-Copyright (c) 2015 Rollinghours.com owners (rhours@outlook.com)
+Copyright (c) Alexander Zhmerik (rhours@outlook.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
 and associated documentation files (the "Software"), to deal in the Software without restriction, 
